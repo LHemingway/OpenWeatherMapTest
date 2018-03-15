@@ -5,6 +5,7 @@ class Pages::OpenweatherLoginPage < SitePrism::Page
 	element :email_input, '#user_email'
 	element :password_input, '#user_password'
 
+
 	def fill_email_field(email)
 		email_input.set(email)
 	end

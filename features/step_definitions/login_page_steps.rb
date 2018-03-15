@@ -1,6 +1,7 @@
 Given(/^I am on the homepage$/) do
 	@openweather_site = OpenweatherSite.new
 	@openweather_site.openweather_homepage.load
+	@openweather_site.openweather_homepage.displayed?
 end
 
 When(/^I click sign in$/) do
@@ -8,6 +9,7 @@ When(/^I click sign in$/) do
 end
 
 And(/^Enter my credentials$/) do
+	expect(current_url).to eql 'https://home.openweathermap.org/users/sign_in'
 	@openweather_site.openweather_login_page.fill_email_field(ENV['OPENWEATHER_EMAIL'])
 	@openweather_site.openweather_login_page.fill_password_field(ENV['OPENWEATHER_PASSWORD'])
 	@openweather_site.openweather_login_page.find_submit_button.click
